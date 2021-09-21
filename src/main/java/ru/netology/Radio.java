@@ -10,6 +10,7 @@ public class Radio {
     int minVolume = 0;
     int maxVolume = 10;
 
+
     public int nextStation() {
         if (currentStation == maxStation) {
             currentStation = minStation;

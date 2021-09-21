@@ -4,19 +4,34 @@ public class Radio {
     private int currentStation;
     private int soundVolume;
 
-    int minStation = 0;
-    int maxStation = 9;
+    private int numberOfStations;
 
-    int minVolume = 0;
-    int maxVolume = 10;
+    private int minStation = 0;
+    private int maxStation;
+
+    private int minVolume = 0;
+    private int maxVolume = 100;
+
+    public Radio() {
+        numberOfStations = 10;
+        maxStation = 9;
+    }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+        maxStation = numberOfStations - 1;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
 
 
     public int nextStation() {
         if (currentStation == maxStation) {
             currentStation = minStation;
-        }
-        else {
-            currentStation =+ 1;
+        } else {
+            currentStation = +1;
         }
         return currentStation;
     }
@@ -24,9 +39,8 @@ public class Radio {
     public int prevStation() {
         if (currentStation == minStation) {
             currentStation = maxStation;
-        }
-        else {
-            currentStation =- 1;
+        } else {
+            currentStation = -1;
         }
         return currentStation;
     }
@@ -34,9 +48,6 @@ public class Radio {
     public void setCurrentStation(int currentStation) {
         if ((currentStation <= maxStation) && (currentStation >= minStation)) {
             this.currentStation = currentStation;
-        }
-        else {
-            return;
         }
     }
 
@@ -47,9 +58,8 @@ public class Radio {
     public int volumeUp() {
         if (soundVolume == maxVolume) {
             soundVolume = maxVolume;
-        }
-        else {
-            soundVolume =+ 1;
+        } else {
+            soundVolume = +1;
         }
         return soundVolume;
     }
@@ -57,9 +67,8 @@ public class Radio {
     public int volumeDown() {
         if (soundVolume == minVolume) {
             soundVolume = minVolume;
-        }
-        else {
-            soundVolume =- 1;
+        } else {
+            soundVolume = -1;
         }
         return soundVolume;
     }
@@ -68,12 +77,9 @@ public class Radio {
         if ((soundVolume >= minVolume) && (soundVolume <= maxVolume)) {
             this.soundVolume = soundVolume;
         }
-        else {
-            return;
-        }
     }
 
     public int getSoundVolume() {
         return soundVolume;
     }
-    }
+}
